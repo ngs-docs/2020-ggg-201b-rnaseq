@@ -82,14 +82,12 @@ rule multiqc:
         """
 
 ### download and index the yeast transcriptome ###
-#rule download_yeast_transcriptome:
-#    output: "rnaseq/reference/GCA_000146045.2_R64_rna_from_genomic.fna.gz"
-#    shell:
-        #curl -O ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/001/146/045/GCA_000146045.2_R64/GCA_000146045.2_R64_rna_from_genomic.fna.gz
-        #mv GCA_000146045.2_R64_rna_from_genomic.fna.gz {output}
-#        """
-#        curl -L https://osf.io/yyyyyyy/download -o {output}
-#        """
+rule download_yeast_transcriptome:
+    output: "rnaseq/reference/GCA_000146045.2_R64_rna_from_genomic.fna.gz"
+    shell:
+        """
+        curl -L https://osf.io/g3eh2/download -o {output}
+        """
 
 rule salmon_index:
     input:  "rnaseq/reference/GCA_000146045.2_R64_rna_from_genomic.fna.gz"
