@@ -1,7 +1,7 @@
 ﻿names,files,condition
-ERR458493,~/2020-ggg-201b-rnaseq/rnaseq/quant/ERR458493_quant/quant.sf,wt
-ERR458494,~/2020-ggg-201b-rnaseq/rnaseq/quant/ERR458494_quant/quant.sf,wt
-ERR458495,~/2020-ggg-201b-rnaseq/rnaseq/quant/ERR458495_quant/quant.sf,wt
-ERR458500,~/2020-ggg-201b-rnaseq/rnaseq/quant/ERR458500_quant/quant.sf,snf2
-ERR458501,~/2020-ggg-201b-rnaseq/rnaseq/quant/ERR458501_quant/quant.sf,snf2
-ERR458502,~/2020-ggg-201b-rnaseq/rnaseq/quant/ERR458502_quant/quant.sf,snf2
+ERR458493,rnaseq/quant/ERR458493_quant/quant.sf,wt
+ERR458494,rnaseq/quant/ERR458494_quant/quant.sf,wt
+ERR458495,rnaseq/quant/ERR458495_quant/quant.sf,wt
+ERR458500,rnaseq/quant/ERR458500_quant/quant.sf,snf2
+ERR458501,rnaseq/quant/ERR458501_quant/quant.sf,snf2
+ERR458502,rnaseq/quant/ERR458502_quant/quant.sf,snf2
