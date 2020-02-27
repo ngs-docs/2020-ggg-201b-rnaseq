@@ -1,7 +1,5 @@
 ---
-title: "Untitled"
-author: "Taylor Reiter"
-date: "2/27/2020"
+title: "Differential Expression and Visualization in R"
 output: html_document
 ---
 
@@ -9,9 +7,7 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-# Differential Expression and Visualization in R
-
-Learning objectives:
+## Learning objectives:
 
 * Create a gene-level count matrix of Salmon quantification using tximport
 * Perform differential expression of a single factor experiment in DESeq2
