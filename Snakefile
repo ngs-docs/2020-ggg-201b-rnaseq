@@ -14,7 +14,6 @@ rule all:
         # replacing {name} with each entry.
         expand("rnaseq/quant/{name}_quant/quant.sf", name=SAMPLES),
         "rnaseq/fastqc/multiqc_report.html",
-        "rnaseq/diffexp/rnaseq_samples.csv"
 
 # download yeast rna-seq data from Schurch et al, 2016 study
 rule download_reads:
@@ -83,15 +82,15 @@ rule multiqc:
 
 ### download and index the yeast transcriptome ###
 rule download_yeast_transcriptome:
-    output: "rnaseq/reference/GCA_000146045.2_R64_rna_from_genomic.fna.gz"
+    output: "rnaseq/reference/Saccharomyces_cerevisiae.R64-1-1.cdna.all.fa.gz" 
     shell:
         """
-        curl -L https://osf.io/g3eh2/download -o {output}
+        curl -L ftp://ftp.ensembl.org/pub/release-99/fasta/saccharomyces_cerevisiae/cdna/Saccharomyces_cerevisiae.R64-1-1.cdna.all.fa.gz -o {output}
         """
 
 rule salmon_index:
-    input:  "rnaseq/reference/GCA_000146045.2_R64_rna_from_genomic.fna.gz"
-    output: directory("rnaseq/quant/sc_index")
+    input: "rnaseq/reference/Saccharomyces_cerevisiae.R64-1-1.cdna.all.fa.gz" 
+    output: directory("rnaseq/quant/sc_ensembl_index")
     conda: "rnaseq-env.yml"
     shell:
         """
@@ -102,7 +101,7 @@ rule salmon_index:
 rule salmon_quantify:
     input:
         reads="rnaseq/quality/{sample}.qc.fq.gz",
-        index_dir="rnaseq/quant/sc_index"
+        index_dir="rnaseq/quant/sc_ensembl_index"
     output: "rnaseq/quant/{sample}_quant/quant.sf"
     params:
         outdir= lambda wildcards: "rnaseq/quant/" + wildcards.sample + "_quant"
@@ -111,13 +110,3 @@ rule salmon_quantify:
         """
         salmon quant -i {input.index_dir} --libType A -r {input.reads} -o {params.outdir} --seqBias --gcBias --validateMappings
         """
-
-# download sample information for differential expression analysis
-rule download_sample_condition_csv: 
-    output: "rnaseq/diffexp/rnaseq_samples.csv"
-    shell:
-        """
-        curl -L https://osf.io/cxp2w/download -o {output}
-        """
-
-

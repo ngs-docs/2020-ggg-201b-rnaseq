@@ -1,0 +1,21 @@
+{
+    "index_version": 4,
+    "reference_gfa": [
+        "rnaseq/quant/sc_ensembl_index"
+    ],
+    "sampling_type": "dense",
+    "k": 31,
+    "num_kmers": 8243691,
+    "num_contigs": 11411,
+    "seq_length": 8586021,
+    "have_ref_seq": true,
+    "have_edge_vec": false,
+    "SeqHash": "d7c5bf09a921c525dbb3d7838b0e433b06bf7c3ef3531fea8371daf265dfdfa9",
+    "NameHash": "46c29b278eabb9692c1582113f8ac795aa27a211a820503ed190d1907e5a5276",
+    "SeqHash512": "1aa38e38eb0522c49632f8777744f035f37051b65af1fa7f76a9da08010adf1051578bb39a05edc2cdc9c4c0d0ea1610ddae42eed2e62c3fc1044fe79153f15e",
+    "NameHash512": "f95ebabbef34c8f92fa38a0f1da265ce56f210e8635405e72adb04f1df7f481361a8b5271167213d6e83ccc02989281f80a747334011092d370898cf9c96b44a",
+    "DecoySeqHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "DecoyNameHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "num_decoys": 0,
+    "first_decoy_index": 18446744073709551615
+}
