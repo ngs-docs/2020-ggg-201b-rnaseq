@@ -14,7 +14,7 @@ knitr::opts_chunk$set(echo = TRUE)
 * Perform quality control and exploratory visualization of RNA-seq data in R
 
 
-## Tximeta text
+## Tximeta
 
 We first need to read our data into R. To do that, we will use a package called
 [tximeta](https://bioconductor.org/packages/release/bioc/html/tximeta.html).
@@ -51,7 +51,6 @@ library(dplyr)
 library(ggplot2)
 library(readr)
 library(pheatmap)
-library(tibble)
 ```
 
 This lesson is executed in binder, so the relevant paths should work if we're
@@ -328,7 +327,7 @@ do this.
 
 ```{r}
 annot_col <- samples %>%
-        column_to_rownames('names') %>%
+        tibble::column_to_rownames('names') %>%
         select(condition) %>%
         as.data.frame()
 ```
