@@ -43,7 +43,7 @@ install.packages("readr")
 install.packages("pheatmap")
 ```
 
-```{r library}
+```{r library, message=FALSE}
 library(SummarizedExperiment)
 library(tximeta)
 library(DESeq2)
@@ -97,7 +97,7 @@ se <- tximeta(samples)
 ```
 
 To look at our `se` object, we can use the following commands:
-```{r}
+```{r, eval = F}
 colData(se)
 assayNames(se)
 rowRanges(se)
@@ -184,7 +184,7 @@ res <- results(dds)
 head(res)
 ```
 
-```{r, eval = F}
+```{r, echo= F}
 kableExtra::kable(res)
 ```
 
@@ -213,7 +213,14 @@ p value or log2 Fold Change:
 ```{r}
 res_sig <- subset(res, padj<.05)
 res_lfc <- subset(res_sig, abs(log2FoldChange) > 1) 
+```
+
+```{r, eval = F}
 head(res_lfc)
+```
+
+```{r, echo= F}
+kableExtra::kable(head(res_lfc))
 ```
 
 ## Visualization of RNA-seq and Differential Expression Results
@@ -278,7 +285,7 @@ head(sample_dists)
 ```
 
 ```{r, echo = F}
-kableExtra::kable(sample_dists)
+kableExtra::kable(head(sample_dists))
 ```
 
 Next, let's calculate the MDS values from the distance matrix.
@@ -336,8 +343,8 @@ annot_col <- samples %>%
 head(annot_col)
 ```
 
-```{r}
-kableExtra::kable(annot_col)
+```{r, echo = F}
+kableExtra::kable(head(annot_col))
 ```
 
 And now plot the heatmap!
