@@ -51,6 +51,7 @@ library(dplyr)
 library(ggplot2)
 library(readr)
 library(pheatmap)
+library(tibble)
 ```
 
 This lesson is executed in binder, so the relevant paths should work if we're
@@ -74,6 +75,9 @@ simplifies the way we interact with this information.
 indexDir <- file.path("rnaseq", "quant", "sc_ensembl_index")
 fastaFTP <- c("ftp://ftp.ensembl.org/pub/release-99/fasta/saccharomyces_cerevisiae/cdna/Saccharomyces_cerevisiae.R64-1-1.cdna.all.fa.gz")
 gtfPath <- "ftp://ftp.ensembl.org/pub/release-99/gtf/saccharomyces_cerevisiae/Saccharomyces_cerevisiae.R64-1-1.99.gtf.gz"
+gtfLocal <- "yeast_ref/Saccharomyces_cerevisiae.R64-1-1.99.gtf.gz"
+fastaLocal <- "yeast_ref/Saccharomyces_cerevisiae.R64-1-1.cdna.all.fa.gz"
+
 ```
 
 With this information set, we can now build an object that saves this information.
@@ -82,8 +86,8 @@ makeLinkedTxome(indexDir = indexDir,
                 source   = "Ensembl", 
                 organism = "Saccharomyces cerevisiae", 
                 release  = "99", 
-                fasta    = fastaFTP,
-                gtf      = gtfPath, 
+                fasta    = fastaLocal,
+                gtf      = gtfLocal,
                 genome   = "GCA_000146045.2",
                 write    = FALSE)
 ```
