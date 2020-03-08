@@ -1,6 +1,7 @@
 ---
 title: "Differential Expression and Visualization in R"
 output: html_document
+authors: "Taylor Reiter, N. Tessa Pierce"
 ---
 
 ```{r setup, include=FALSE}
