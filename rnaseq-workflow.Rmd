@@ -4,7 +4,6 @@ author:
   - Taylor Reiter
   - N. Tessa Pierce
 output: html_document
-authors: "Taylor Reiter, N. Tessa Pierce"
 ---
 
 ```{r setup, include=FALSE}
