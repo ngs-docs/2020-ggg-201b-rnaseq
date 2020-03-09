@@ -1,5 +1,8 @@
 ---
 title: "Differential Expression and Visualization in R"
+author: 
+  - Taylor Reiter
+  - N. Tessa Pierce
 output: html_document
 ---
 
