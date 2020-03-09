@@ -4,6 +4,7 @@ author:
   - Taylor Reiter
   - N. Tessa Pierce
 output: html_document
+authors: "Taylor Reiter, N. Tessa Pierce"
 ---
 
 ```{r setup, include=FALSE}
@@ -38,7 +39,7 @@ installation commands:
 ```{r install, eval = F}
 if (!requireNamespace("BiocManager", quietly = TRUE))
  install.packages("BiocManager")
-BiocManager::install("tximeta")
+BiocManager::install("tximeta", version = "3.10")
 BiocManager::install("DESeq2")
 install.packages("ggplot2")
 install.packages("dplyr")
@@ -46,7 +47,7 @@ install.packages("readr")
 install.packages("pheatmap")
 ```
 
-```{r library}
+```{r library, message=FALSE}
 library(SummarizedExperiment)
 library(tximeta)
 library(DESeq2)
@@ -54,6 +55,10 @@ library(dplyr)
 library(ggplot2)
 library(readr)
 library(pheatmap)
+```
+
+```{r, echo = F, message = F}
+library(kableExtra)
 ```
 
 This lesson is executed in binder, so the relevant paths should work if we're
@@ -66,7 +71,8 @@ samples <- read_csv("rnaseq_samples.csv")
 ```
 
 ```{r, echo = F}
-kableExtra::kable(samples)
+kableExtra::kable(samples) %>%
+  kable_styling()
 ```
 
 
@@ -79,11 +85,10 @@ fastaFTP <- c("ftp://ftp.ensembl.org/pub/release-99/fasta/saccharomyces_cerevisi
 gtfPath <- "ftp://ftp.ensembl.org/pub/release-99/gtf/saccharomyces_cerevisiae/Saccharomyces_cerevisiae.R64-1-1.99.gtf.gz"
 gtfLocal <- "yeast_ref/Saccharomyces_cerevisiae.R64-1-1.99.gtf.gz"
 fastaLocal <- "yeast_ref/Saccharomyces_cerevisiae.R64-1-1.cdna.all.fa.gz"
-
 ```
 
 With this information set, we can now build an object that saves this information.
-```{r}
+```{r, warning = F}
 makeLinkedTxome(indexDir = indexDir,
                 source   = "Ensembl", 
                 organism = "Saccharomyces cerevisiae", 
@@ -95,12 +100,12 @@ makeLinkedTxome(indexDir = indexDir,
 ```
 
 To create an `se` object for using our `tximeta` information:
-```{r}
+```{r, warning = F}
 se <- tximeta(samples)
 ```
 
 To look at our `se` object, we can use the following commands:
-```{r}
+```{r, eval = F, eval = F}
 colData(se)
 assayNames(se)
 rowRanges(se)
@@ -115,7 +120,7 @@ gse <- summarizeToGene(se)
 
 And now let's take a look at the data
 
-```{r}
+```{r, eval = F}
 rowRanges(gse)
 mcols(gse)
 ```
@@ -179,7 +184,7 @@ Everything from normalization to linear modeling was carried out by the use of a
 
 And look at the results! The results() function lets you extract the base means across samples, log2-fold changes, standard errors, test statistics etc. for every gene.
 
-```{r}
+```{r, warning = F}
 res <- results(dds)
 ```
 
@@ -187,8 +192,9 @@ res <- results(dds)
 head(res)
 ```
 
-```{r, eval = F}
-kableExtra::kable(res)
+```{r, echo= F}
+kableExtra::kable(head(res)) %>%
+  kable_styling()
 ```
 
 The first thing that prints to the screen is information about the "contrasts"
@@ -216,7 +222,15 @@ p value or log2 Fold Change:
 ```{r}
 res_sig <- subset(res, padj<.05)
 res_lfc <- subset(res_sig, abs(log2FoldChange) > 1) 
+```
+
+```{r, eval = F}
 head(res_lfc)
+```
+
+```{r, echo= F}
+kableExtra::kable(head(res_lfc))  %>%
+  kable_styling()
 ```
 
 ## Visualization of RNA-seq and Differential Expression Results
@@ -281,7 +295,8 @@ head(sample_dists)
 ```
 
 ```{r, echo = F}
-kableExtra::kable(sample_dists)
+kableExtra::kable(head(sample_dists))  %>%
+  kable_styling()
 ```
 
 Next, let's calculate the MDS values from the distance matrix.
@@ -295,7 +310,8 @@ head(mds)
 ```
 
 ```{r, echo = F}
-kableExtra::kable(mds)
+kableExtra::kable(head(mds))%>%
+  kable_styling()
 ```
 
 And plot with `ggplot2`!
@@ -339,8 +355,9 @@ annot_col <- samples %>%
 head(annot_col)
 ```
 
-```{r}
-kableExtra::kable(annot_col)
+```{r, echo = F}
+kableExtra::kable(head(annot_col)) %>%
+  kable_styling()
 ```
 
 And now plot the heatmap!
