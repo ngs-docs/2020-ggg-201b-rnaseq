@@ -2,5 +2,8 @@ pkgs = c("BiocManager", "ggplot2", "dplyr", "readr", "pheatmap", "kableExtra" ,"
 ncores = parallel::detectCores()
 install.packages(pkgs, Ncpus = ncores)
 
-BiocManager::install("tximeta")
+if (!requireNamespace("BiocManager", quietly = TRUE))
+ install.packages("BiocManager")
+
+BiocManager::install("tximeta", version="3.10")
 BiocManager::install("DESeq2")

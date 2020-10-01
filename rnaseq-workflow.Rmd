@@ -36,14 +36,14 @@ like to do a similar analysis on your own system, you can use the following
 installation commands:
 
 ```{r install, eval = F}
-if (!requireNamespace("BiocManager", quietly = TRUE))
- install.packages("BiocManager")
-BiocManager::install("tximeta", version = "3.10")
-BiocManager::install("DESeq2")
 install.packages("ggplot2")
 install.packages("dplyr")
 install.packages("readr")
 install.packages("pheatmap")
+if (!requireNamespace("BiocManager", quietly = TRUE))
+ install.packages("BiocManager")
+BiocManager::install("tximeta", version = "3.10")
+BiocManager::install("DESeq2")
 ```
 
 ```{r library, message=FALSE}
