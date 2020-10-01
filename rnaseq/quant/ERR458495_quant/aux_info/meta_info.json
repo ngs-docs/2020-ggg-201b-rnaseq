@@ -38,9 +38,9 @@
     "num_decoy_fragments": 0,
     "num_dovetail_fragments": 0,
     "num_fragments_filtered_vm": 17583,
-    "num_alignments_below_threshold_for_mapped_fragments_vm": 26749,
+    "num_alignments_below_threshold_for_mapped_fragments_vm": 26750,
     "percent_mapped": 86.73608073632853,
     "call": "quant",
-    "start_time": "Thu Feb 27 11:03:26 2020",
-    "end_time": "Thu Feb 27 11:03:33 2020"
+    "start_time": "Thu Oct  1 05:45:04 2020",
+    "end_time": "Thu Oct  1 05:45:11 2020"
 }
