@@ -40,10 +40,16 @@ install.packages("ggplot2")
 install.packages("dplyr")
 install.packages("readr")
 install.packages("pheatmap")
+install.packages("RSQlite")
+install.packages("data.table")
+install.packages("kableExtra")
+
 if (!requireNamespace("BiocManager", quietly = TRUE))
  install.packages("BiocManager")
 BiocManager::install("tximeta", version = "3.10")
 BiocManager::install("DESeq2")
+BiocManager::install("SummarizedExperiment")
+
 ```
 
 ```{r library, message=FALSE}
