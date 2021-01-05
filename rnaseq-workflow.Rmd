@@ -40,13 +40,13 @@ install.packages("ggplot2")
 install.packages("dplyr")
 install.packages("readr")
 install.packages("pheatmap")
-install.packages("RSQlite")
+#install.packages("RSQlite")
 install.packages("data.table")
 install.packages("kableExtra")
 
 if (!requireNamespace("BiocManager", quietly = TRUE))
- install.packages("BiocManager")
-BiocManager::install("tximeta", version = "3.10")
+ install.packages("BiocManager", version = "3.11")
+BiocManager::install("tximeta")
 BiocManager::install("DESeq2")
 BiocManager::install("SummarizedExperiment")
 
@@ -98,9 +98,9 @@ makeLinkedTxome(indexDir = indexDir,
                 source   = "Ensembl", 
                 organism = "Saccharomyces cerevisiae", 
                 release  = "99", 
+                genome   = "GCA_000146045.2",
                 fasta    = fastaLocal,
                 gtf      = gtfLocal,
-                genome   = "GCA_000146045.2",
                 write    = FALSE)
 ```
 
@@ -352,7 +352,7 @@ do this.
 ```{r}
 annot_col <- samples %>%
         tibble::column_to_rownames('names') %>%
-        select(condition) %>%
+        dplyr::select(condition) %>%
         as.data.frame()
 ```
 
