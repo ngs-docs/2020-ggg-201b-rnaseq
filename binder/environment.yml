@@ -4,3 +4,15 @@ channels:
     - defaults
 dependencies:
     - snakemake-minimal
+    - r-ggplot2
+    - r-dplyr
+    - r-readr
+    - r-pheatmap
+    - r-knitr
+    - r-rmarkdown
+    - r-rsqlite
+    - r-data.table
+    - r-kableextra
+    - bioconductor-tximeta
+    - bioconductor-deseq2
+    - bioconductor-summarizedexperiment
