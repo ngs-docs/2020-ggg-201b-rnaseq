@@ -10,7 +10,7 @@ UC Davis
 
 Authors: Taylor Reiter and N. Tessa Pierce
 
-Technical updates by Titus Bronw.
+Technical updates by Titus Brown.
 
 ## To run in binder --
 
