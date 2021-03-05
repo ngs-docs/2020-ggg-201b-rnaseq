@@ -77,7 +77,7 @@ rule multiqc:
     conda: "rnaseq-env.yml"
     shell:
         """
-        multiqc {params.raw_dir} {params.trimmed_dir} --filename {output}
+        multiqc -f {params.raw_dir} {params.trimmed_dir} --filename {output}
         """
 
 ### download and index the yeast transcriptome ###
