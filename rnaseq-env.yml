@@ -7,4 +7,4 @@ dependencies:
   - trimmomatic=0.39
   - multiqc=1.8
   - salmon=1.4.0
-  - tbb==2020.3
+  - tbb==2020.2
