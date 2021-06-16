@@ -1,6 +1,6 @@
-# 2020-ggg-201b-rnaseq
+# RNA-Seq in the Cloud
 
-February 28, 2020  
+June 21 & 23, 2021
 
 [GGG201b, Intro to Bioinformatics](https://github.com/ngs-docs/2020-GGG201b-lab)
 
