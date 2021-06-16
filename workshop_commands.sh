@@ -15,7 +15,7 @@ source .bashrc
 ## Note you could also restart the terminal for the same effect
 
 # Activate conda environment
-conda activate rnaseq_qc_map
+conda activate rnaseq-qc-map
 
 # Create data folder
 mkdir rnaseq/raw_data
