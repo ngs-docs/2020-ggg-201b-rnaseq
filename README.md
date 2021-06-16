@@ -6,7 +6,7 @@ June 21 & 23, 2021
 
 UC Davis
 
-[![Binder](https://binder.pangeo.io/badge_logo.svg)](https://binder.pangeo.io/v2/gh/nih-cfde/rnaseq-in-the-cloud/stable?urlpath=RStudio)
+[![Binder](https://binder.pangeo.io/badge_logo.svg)](https://binder.pangeo.io/v2/gh/nih-cfde/rnaseq-in-the-cloud/stable?urlpath=rstudio)
 
 Authors: Taylor Reiter and N. Tessa Pierce
 
