@@ -1,3 +1,4 @@
+name: rnaseq-qc-map #this specifies environment name
 channels:
   - conda-forge
   - bioconda
