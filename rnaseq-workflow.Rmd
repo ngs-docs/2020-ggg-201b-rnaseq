@@ -1,35 +1,39 @@
 ---
-title: "Differential Expression and Visualization in R"
+title: "Differential Expression with DESeq2"
 author: 
   - Taylor Reiter
   - N. Tessa Pierce
-output: html_document
+  - Amanda Charbonneau
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output:
+  html_document:
+    theme: "cerulean"
+    number_sections: true
+    toc: true
+    toc_depth: 5
+    toc_float: true
+    collapsed: false
+    df_print: paged
+    code_folding: hide
 ---
+
+```{r GlobalVariables}
+
+# default to not showing code, you can change it for chunks as you like
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+
+# Setting a reasonable p-value threshold to be used throughout
+p_cutoff <- 0.1
+
+# this is a fold change cutoff 
+FC_cutoff <- log2(1.1)
+
+```
+
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
-
-## Learning objectives:
-
-* Create a gene-level count matrix of Salmon quantification using tximport
-* Perform differential expression of a single factor experiment in DESeq2
-* Perform quality control and exploratory visualization of RNA-seq data in R
-
-
-## Tximeta
-
-We first need to read our data into R. To do that, we will use a package called
-[tximeta](https://bioconductor.org/packages/release/bioc/html/tximeta.html).
-We use tximeta for two main reasons: first, it facilitates summarizing transcript-level counts
-from Salmon to the gene-level for differential expression analysis. Second, tximeta enhances
-incorporates metadata (e.g. transcript locations, transcript and genome source and version, 
-appropriate chromosome lengths, etc) for each transcriptome. This ensures computational reproducibility 
-by attaching critical annotation information to the data object, such that exact quantifications can be 
-reproduced from raw data (all software versions are also attached to the data object).
-
-For more information, see the
-[tximeta vignette](https://bioconductor.org/packages/release/bioc/vignettes/tximeta/inst/doc/tximeta.html)
 
 Since we're working in binder, all of the software is already installed. If you'd
 like to do a similar analysis on your own system, you can use the following 
@@ -43,14 +47,79 @@ install.packages("pheatmap")
 #install.packages("RSQlite")
 install.packages("data.table")
 install.packages("kableExtra")
-
+install.packages("reshape2")
 if (!requireNamespace("BiocManager", quietly = TRUE))
  install.packages("BiocManager", version = "3.11")
 BiocManager::install("tximeta")
 BiocManager::install("DESeq2")
 BiocManager::install("SummarizedExperiment")
-
 ```
+
+
+
+This lesson is executed in binder, so the relevant paths should work if we're
+running this from within the 2020-ggg-201b-rnaseq folder.
+
+# Conceptual Overview
+
+## Learning Objectives:
+
+* Create a gene-level count matrix of Salmon quantification using tximport
+* Perform quality control and exploratory visualization of RNA-seq data in R
+* Try very hard not to go on a fishing expedition!
+* Perform differential expression of a single factor experiment in DESeq2
+* Learn how to make your own analysis reproducible
+
+
+## About this lesson
+
+During this lesson, you’ll learn how to use RMarkdown for reproducible data analysis, if you want to learn more, [this](https://rpubs.com/marschmi/RMarkdown) is a great RMarkdown tutorial. This tutorial was written using data from [Schurch et al.](http://rnajournal.cshlp.org/content/22/6/839.long), where wildtype (WT) and Δsnf2 mutation () yeast were compared to test the underlying distribution of RNA-seq data, and to test which differential expression programs work best. They had 672 samples, we’ll use 6 of them. These are the same samples we worked with on Day One. To make things go more quickly, and make it more like a real analysis, we've pre-loaded the results from Day One into your Binder.
+
+The pipeline we're using is **Trimmomatic -> Salmon -> TPM -> DESeq2**:
+
+![](https://i.imgur.com/Pphn2pB.jpg)
+from: (http://dx.doi.org/10.1038/s41598-020-76881-x)
+
+That image makes it look like we only really have one thing to do today, but we actually have several:
+
+1. Get our read counts into R
+2. Explore the input data
+3. Run a model that fits the data to find the differentially expressed (DE) genes
+4. Explore the results
+
+
+---
+
+# Getting your read counts into R
+
+Unless you are using a differential expression tool that specifically requires you to do normalizaiton before adding your counts, you shouldn't do anything to your raw counts before importing them. All of the modern DE tools that I know of use algorithms that assume un-normalized counts, and giving them normalized data will result in incorrect modeling of the data and bad results. The values in your initial count matrix should be un-normalized counts or estimated counts of sequencing reads (for single-end RNA-seq) or fragments (for paired-end RNA-seq). 
+
+
+## Tximeta
+
+We're going to import the raw counts from Salmon into DESeq2 using a package called
+[tximeta](https://bioconductor.org/packages/release/bioc/html/tximeta.html). We're using this package because it was custom created by the makers of Salmon and DESeq2 to be a bridge between their tools.
+
+To use `tximeta`, you supply the name and location of the files you used to get your read counts (the index, the transcriptome, etc) and the name and location of the output files (the read counts). It then automatically transforms all those pieces of data to put them into a new format: a data structure in R called a "Summarized Experiment", which is what DESeq2 takes as input. 
+
+
+
+tximeta incorporates all of that metadata (e.g. transcript locations, transcript and genome source and version, appropriate chromosome lengths, etc) for each transcriptome. This ensures computational reproducibility by attaching critical annotation information to the data object, such that exact quantifications can be reproduced from raw data (all software versions are also attached to the data object).
+
+
+If you used a different pipeline, you would have to build a "Summarized Experiment" structure yourself, and its a bit tricky to do, so this is another reason it's often good to use established pipelines: someone may have already written helper scripts to automate computationally difficult steps.
+
+`tximeta` is built to start with output from Salmon, [alevin](https://salmon.readthedocs.io/en/latest/alevin.html), or [sailfish](http://www.cs.cmu.edu/~ckingsf/software/sailfish/), but it will work as a bridge to any R differential expression tool that uses a Summarized Experiment as input. Technically, `tximeta` is built on top of `tximport`, and you can also use it to start from any counts output tool that is supported by `tximport`, but in practice trying to get other data into a format that `tximeta` can use isn't really much easier than just reformatting it to be a summarized experiment directly.
+
+https://bioconductor.org/packages/release/bioc/vignettes/tximeta/inst/doc/tximeta.html
+
+
+
+
+For more information, see the
+[tximeta vignette](https://bioconductor.org/packages/release/bioc/vignettes/tximeta/inst/doc/tximeta.html)
+
+
 
 ```{r library, message=FALSE}
 library(SummarizedExperiment)
@@ -60,14 +129,9 @@ library(dplyr)
 library(ggplot2)
 library(readr)
 library(pheatmap)
-```
-
-```{r, echo = F, message = F}
 library(kableExtra)
+library(reshape2)
 ```
-
-This lesson is executed in binder, so the relevant paths should work if we're
-running this from within the 2020-ggg-201b-rnaseq folder.
 
 First let's read in our `rnaseq_samples.csv` file. This file designates the names
 of our samples, their conditions, and the path to their quantification files. 
@@ -76,8 +140,7 @@ samples <- read_csv("rnaseq_samples.csv")
 ```
 
 ```{r, echo = F}
-kableExtra::kable(samples) %>%
-  kable_styling()
+DT::datatable(samples)
 ```
 
 
@@ -125,10 +188,50 @@ gse <- summarizeToGene(se)
 
 And now let's take a look at the data
 
-```{r, eval = F}
-rowRanges(gse)
-mcols(gse)
+```{r, exploration}
+explore <- melt(assays(gse)[["counts"]])
+colnames(explore) <- c("transcript", "sample", "count")
+
 ```
+
+These show us overall trends in the data
+
+
+count vs transcript: 
+```{r transcripts}
+
+ggplot(explore, aes(transcript, count)) + geom_point()
+
+
+```
+
+The same plot, but colored by sample: 
+
+```{r}
+
+
+ggplot(explore, aes(transcript, count, col=sample)) + geom_point()
+
+```
+
+
+That's still a little hard to see. So, let's split the samples into their own plots:
+
+```{r}
+ggplot(explore, aes(transcript, count)) + geom_point() + facet_wrap(~sample)
+
+```
+
+
+Even though we're still just doing exploration, we're going to put the data into DESeq2 here. That's because it will make a compact data structure that holds all the counts, as well as the metadata. It makes it way easier to do a lot of other exploration once it's in that structure. 
+
+When you analyse your own data, you can run DESeq2 with a very basic model just to get the easy to use data structures for plotting, then re-run it later with the model you are actually interested in. The data structures we're going to use for exploration are the unmodeled data
+
+
+
+str(metadata(se)[["quantInfo"]])
+metadata(se)[["tximetaInfo"]]
+
 
 
 ## Why do we need to normalize and transform read counts
@@ -328,6 +431,21 @@ ggplot(mds, aes(X1, X2, shape = condition)) +
 ``` 
 
 
+>The results of this study suggest the following should be considered when designing an RNA-seq experiment for DGE:
+
+> - At least six replicates per condition for all experiments.
+
+> - At least 12 replicates per condition for experiments where identifying the majority of all DE genes is important.
+
+> - For experiments with <12 replicates per condition; use edgeR (exact) or DESeq2.
+
+> - For experiments with >12 replicates per condition; use DESeq.
+
+> - Apply a fold-change threshold appropriate to the number of replicates per condition between 0.1 ≤ T ≤ 0.5 (see Fig. 2 and the discussion of tool performance as a function of replication).
+
+From: http://dx.doi.org/10.1261/rna.053959.115
+
+
 **Question**  
 How similar are the samples between conditions?
 
@@ -379,6 +497,15 @@ counts, the patterns aren't very strong. How does this compare to our MDS plot?
 **Question**  
 When are heatmaps useful?   
 What other types of heatmaps have you seen in the wild?
+
+
+I also have it print my session info once all my packages are loaded so there's a record of my versions:
+
+```{r Session}
+sessionInfo()
+
+```
+
 
 ## Further Notes
 
