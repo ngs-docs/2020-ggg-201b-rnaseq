@@ -4,13 +4,12 @@ June 21 & 23, 2021
 
 CFDE Workshop
 
-UC Davis
-
 [![Binder](https://binder.pangeo.io/badge_logo.svg)](https://binder.pangeo.io/v2/gh/nih-cfde/rnaseq-in-the-cloud/stable?urlpath=rstudio)
 
-Authors: Taylor Reiter and N. Tessa Pierce
+Adapted for CFDE workshop from materials developed by Taylor Reiter and N. Tessa Pierce for 2020-ggg-201b course at UC Davis.
 
-## To run in binder --
+
+## To run snakemake in binder --
 
 1) start the binder
 
