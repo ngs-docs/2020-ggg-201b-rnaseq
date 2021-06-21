@@ -56,8 +56,8 @@ curl -L https://osf.io/9c5jz/download -o myproject/raw_data/err_md5sum.txt
 # Download the TruSeq2 primer set
 curl -L https://raw.githubusercontent.com/timflutre/trimmomatic/master/adapters/TruSeq2-SE.fa -o myproject/ref_files/TruSeq2-SE.fa
 
-# Download the yeast transcriptome (not run)
-# curl -L ftp://ftp.ensembl.org/pub/release-99/fasta/saccharomyces_cerevisiae/cdna/Saccharomyces_cerevisiae.R64-1-1.cdna.all.fa.gz -o myproject/ref_files/Saccharomyces_cerevisiae.R64-1-1.cdna.all.fa.gz
+# Download the yeast transcriptome
+curl -L ftp://ftp.ensembl.org/pub/release-99/fasta/saccharomyces_cerevisiae/cdna/Saccharomyces_cerevisiae.R64-1-1.cdna.all.fa.gz -o myproject/ref_files/Saccharomyces_cerevisiae.R64-1-1.cdna.all.fa.gz
 
 ## Exercise 1
 # Use the tree command to determine if you have downloaded the correct files to the correct directories.
@@ -68,13 +68,13 @@ curl -L https://raw.githubusercontent.com/timflutre/trimmomatic/master/adapters/
 md5sum myproject/raw_data/ERR458493.fq.gz
 
 # Compare with metdata file
-head myproject/raw_data/err_md5sum.txt
+head -n 1 myproject/raw_data/err_md5sum.txt
 ## Note you can use the first 7-8 characters of the hash for comparison
 
 ## Exercise 2
 # Check that you have the correct hash (26e91cde337004233b7f43aff7102828) for the Saccharomyces_cerevisiae transcriptome
 
-# Examine the FASTQ file
+# Anatomy of FASTQ file
 # Clear your terminal screen
 clear
 
@@ -126,13 +126,24 @@ fastqc myproject/trimmed/ERR458493.qc.fq.gz --outdir myproject/trimmed/fastqc/
 ## Exercise 7
 # Compare the trimmed FastQC report to the original one. What has changed? Has it improved the data?
 
+## Exercise 8
+# We can test to see if increasing the trimming makes a large difference in this dataset.
+# Re-run trimmomatic with leading and trailing minimum scores of 5, then run a FastQC report for your new trim. Be sure to name the output files something that will distinguish them from the ones you already have.
+# Compare the fastqc report to the one with a minimum of 2. Has it improved the data?
+
 # Running salmon
 # Generate salmon index
-salmon index --index myproject/quant/sc_ensembl_index --transcripts yeast_ref/Saccharomyces_cerevisiae_combined.fa -d  yeast_ref/decoys.txt
+salmon index --index myproject/quant/sc_ensembl_index --transcripts myproject/ref_files/Saccharomyces_cerevisiae.R64-1-1.cdna.all.fa.gz
 
-## Exercise 8
+## Exercise 9
 # What kinds of files does indexing make and what do they tell you?
 # Either in the command line or the file browser check out one or two of the files that were created. Avoid the .bin files, these are in binary and won’t open. What is in the non-binary files? Are any of them useful? Report back in the chat if you find something that seems important.
+
+# Generating salmon index including decoy file
+salmon index --index myproject/quant/sc_ensembl_index --transcripts yeast_ref/Saccharomyces_cerevisiae_combined.fa -d  yeast_ref/decoys.txt
+
+## Exercise 10
+# Check for warnings. Look at the pre_indexing.log file and see what it says.
 
 # Quantify reads with salmon
 salmon quant -i myproject/quant/sc_ensembl_index --libType A -r myproject/trimmed/ERR458493.qc.fq.gz -o myproject/quant/ERR458493_quant --seqBias --gcBias --validateMappings
@@ -143,8 +154,21 @@ ls myproject/quant/ERR458493_quant/
 # Examine the contents of a individual salmon output file
 less myproject/quant/ERR458493_quant/aux_info/meta_info.json
 
-## Exercise 9
+## Exercise 11
 # The file we’re most interested in is the count file. It’s called quant.sf. Navigate to it and open it. What is in this file?
+
+## Exercise 12
+# What would you expect to happen if you ran Salmon on 2 sequencing files?
+
+## Exercise 13
+# Run Salmon on the more stringently trimmed version of your file.
+# How did it go? In the zoom chat tell us whether more stringent trimming improved your mapping rate.
 
 # Running with multiple files (BONUS)
 snakemake -j 4 --use-conda
+
+## Exercise 14
+# Snakemake is working in a different folder than you were so it won’t overwrite all your hard work. Using one of the methods you’ve learned today, checkout the ‘rnaseq’ folder to see what the output for 6 files look like. Try to answer some of these questions:
+# How does quality compare across the six samples?
+# How do mapping rates compare across samples?
+# The automated pipeline is coded to use a slightly different folder setup. Do you like one better than the other? How would you organize your workspace to make the most sense to you?

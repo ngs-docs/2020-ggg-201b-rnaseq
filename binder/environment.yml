@@ -1,3 +1,4 @@
+name: 2021-cfde-rnaseq-in-cloud
 channels:
     - conda-forge
     - bioconda
