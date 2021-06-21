@@ -17,6 +17,7 @@ dependencies:
     - r-rsqlite
     - r-data.table
     - r-kableextra
+    - r-reshape2
     - bioconductor-tximeta
     - bioconductor-deseq2
     - bioconductor-summarizedexperiment
