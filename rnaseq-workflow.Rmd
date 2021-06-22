@@ -310,10 +310,12 @@ BiocManager::install("apeglm")
 <div class="alert alert-info">
 ### ‼️ Tip 
 
-In Rmarkdown you can run sets of commands by 
+In Rmarkdown you can run sets of commands by:
+
 - Putting your cursor in a set and pressing Command+Shift+Enter on your mac
 - Putting your cursor in a set and pressing pressing Ctrl+Shift+Enter on your windows machine
 - Clicking the little play button (the green arrow) on the set you want
+
 </div>
 
 
