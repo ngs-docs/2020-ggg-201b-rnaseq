@@ -734,7 +734,7 @@ One way to do that is to use the `vst()` function. It performs variance
 stabilized transformation on the count data, while controlling for library
 size of samples.
 
-```{r vsd, eval=F}
+```{r vsd}
 vsd <- vst(dds)
 ```
 
