@@ -21,3 +21,4 @@ dependencies:
     - bioconductor-tximeta
     - bioconductor-deseq2
     - bioconductor-summarizedexperiment
+    - bioconductor-apeglm
