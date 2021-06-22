@@ -646,8 +646,6 @@ Because DESeq is simultanously using the p-value and log2fold change to determin
 
 Looking at our results is great, but plotting them is even better!
 
-Procrastigraphing: excessive creation of data visualizations
-From: https://speakerdeck.com/raynamharris/rnaseq-a-five-course-meal
 
 ### MA Plot
 
@@ -723,9 +721,47 @@ to produce such a plot:
 plotCounts(dds, gene=which.min(res$padj), intgroup="condition")
 ```
 
+## End of Day 2
+
+We've learned how to turn read counts into expression estimates, decide if our data is a good fit for DESeq2, and explored some ways of looking at our data.
+
+![](https://i.imgur.com/WbVNRyd.jpg)
+
+<div class="alert alert-info">
+### Reproducible Data Practice 👀
+At the begining or end of every script, you should have R record the parameters of your session, that way you know exactly which packages you used and what versions they were. The command is `sessionInfo()`
+</div>
+
+Finally, lets print our session info so there's a record of our versions:
+
+```{r Session}
+
+# Print session info
+sessionInfo()
+
+```
+
+<div class="alert alert-success">
+✏️ Please fill out our post-workshop survey! We use the feedback to help improve our training materials and future workshops. Link here: https://forms.gle/ezq8egt2CP56dkrp7
+</div>
+
+:question: Questions?
+  
+  
+## Resources
+
+- [CFDE training webite](https://training.nih-cfde.org/en/latest/)
+- [References and further reading](https://hackmd.io/vxZ-4b-SSE69d2kxG7D93w)
+- [Workshop additional resources/FAQ](https://hackmd.io/RweX2WZ7RGGtfLfCDuEubQ)
+- [CFDE events & workshops](https://www.nih-cfde.org/events/)
+- [DIB Lab video about RNA-Seq Concepts](https://www.youtube.com/watch?v=4cndEDLIGVU&feature=youtu.be)
+- Introduction to differential gene expression analysis using RNA-seq (Written by Friederike Dündar, Luce Skrabanek, Paul Zumbo). Click [here](http://chagall.med.cornell.edu/RNASEQcourse/Intro2RNAseq.pdf)
+- Introduction to DGE - click [here](https://hbctraining.github.io/DGE_workshop/lessons/04_DGE_DESeq2_analysis.html)
 
 
-### Other useful exploration plots
+ 
+
+### Bonus! Other useful exploration plots
 
 We already did our exploration, and its a little weird to come back now, but there are some plots we might want to put in our exploration that are easiest to plot from the raw data *after* you run DESeq2. In my own analysis, I typically run DESeq2 with a dummy model just to get the data strucuture during my exploration phase, and completely ignore the modeled data so I can run these:
 
@@ -797,31 +833,6 @@ https://bioconductor.org/packages/release/bioc/vignettes/Glimma/inst/doc/DESeq2.
 </div>
 
 
-<div class="alert alert-info">
-### Reproducible Data Practice 👀
-At the begining or end of every script, you should have R record the parameters of your session, that way you know exactly which packages you used and what versions they were. The command is `sessionInfo()`
-</div>
-
-Finally, lets print our session info so there's a record of our versions:
-
-```{r Session}
-
-# Print session info
-sessionInfo()
-
-```
-
-
-
-## Resources
-
-- [CFDE training webite](https://training.nih-cfde.org/en/latest/)
-- [References and further reading](https://hackmd.io/vxZ-4b-SSE69d2kxG7D93w)
-- [Workshop additional resources/FAQ](https://hackmd.io/RweX2WZ7RGGtfLfCDuEubQ)
-- [CFDE events & workshops](https://www.nih-cfde.org/events/)
-- [DIB Lab video about RNA-Seq Concepts](https://www.youtube.com/watch?v=4cndEDLIGVU&feature=youtu.be)
-- Introduction to differential gene expression analysis using RNA-seq (Written by Friederike Dündar, Luce Skrabanek, Paul Zumbo). Click [here](http://chagall.med.cornell.edu/RNASEQcourse/Intro2RNAseq.pdf)
-- Introduction to DGE - click [here](https://hbctraining.github.io/DGE_workshop/lessons/04_DGE_DESeq2_analysis.html)
 
 
 
