@@ -630,7 +630,7 @@ DESeq2 uses the Benjamini-Hochberg (BH) adjustment (Benjamini and Hochberg 1995)
 
 The DESeq2 software automatically performs independent filtering that maximizes the number of genes with adjusted p value less than a critical value (by default, alpha is set to 0.1). This automatic independent filtering is performed by, and can be controlled by, the results function. 
 
-<div class="alert alert-alert">
+<div class="alert alert-warning">
 ### Common Error ⁉️
 The independent filtering function does not work the way most people assume! It is maximizing the number of genes that *simultanously* meet two critical thresholds (the alpha and the p-value). If you simply take your results and filter by those two thresholds sequentially, you will *not* get the same result.
 
