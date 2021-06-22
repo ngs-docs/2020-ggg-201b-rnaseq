@@ -237,7 +237,7 @@ In order to compare the gene expression between two conditions, we must therefor
 
 - Shrink LFCs: The 'magic' of DESeq2 is the way that it 'shares' information across differnt parts of the dataset in a rigorous way to better estimate the variation of the data from different angles so it can create a better result. It uses this information to change the log fold change value- the amount of difference there is between treatment- for each gene based on all of that information about how variation acts in the dataset as a whole.
 
-This outdated tutorial is no longer useful in terms of commands, and the algorithm of DESeq2 has changed a bit since this was written, BUT, [this tutorial has a lot of good description of those algorithm pieces in a bit more detail](https://hbctraining.github.io/DGE_workshop/lessons/04_DGE_DESeq2_analysis.html)
+[This outdated tutorial](https://hbctraining.github.io/DGE_workshop/lessons/04_DGE_DESeq2_analysis.html) is no longer useful in terms of commands, and the algorithm of DESeq2 has changed a bit since this was written, BUT, it has a lot of good description of those algorithm pieces in a bit more detail.
 
 
 <div class="alert alert-info">
