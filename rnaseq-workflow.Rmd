@@ -712,7 +712,7 @@ The results of [this study](http://dx.doi.org/10.1261/rna.053959.115) suggest th
 - Apply a fold-change threshold appropriate to the number of replicates per condition between 0.1 ≤ T ≤ 0.5 (see Fig. 2 and the discussion of tool performance as a function of replication).
 </div>
 
-### Plotting individual gene
+### Plotting individual genes
 
 Although it's helpful to plot many (or all) genes at once, sometimes we want to
 see how counts change for a specific gene. We can use the following code
