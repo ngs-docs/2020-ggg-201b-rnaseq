@@ -14,7 +14,7 @@ output:
     collapsed: false
     highlight: pygment
     df_print: paged
-    code_folding: hide
+    code_folding: show
 ---
 
 ```{r GlobalVariables}
@@ -501,6 +501,17 @@ If I was analysing my own data here, I would run a simlar PCA but colorize by di
 
 What I was supposed to do was find DE genes between the treatments (High and Low), but the blocking effect of *who grew the plants* (KBS and Reed) was much, much stronger and needed to be part of my model.
 
+<div class="alert alert-success">
+#### Exercise ✍️ 
+If PC2 looks like the difference between our treatments what is PC1? If you had access to all the metadata from [this experiment](Schurch et al.), what would you do to figure out what it is?
+
+<details>
+
+PC1 is likely a blocking effect that we don't have recorded in our demonstration dataset, but probably is in the original data. I would go to the original data and plot each of the blocking factors onto my PCA to see which one seemed to correlate with PC1, and I would be sure to add that effect to my model to remove it
+
+</details>
+</div>
+
 
 
 
@@ -742,8 +753,8 @@ sessionInfo()
 - [Workshop additional resources/FAQ](https://hackmd.io/RweX2WZ7RGGtfLfCDuEubQ)
 - [CFDE events & workshops](https://www.nih-cfde.org/events/)
 - [DIB Lab video about RNA-Seq Concepts](https://www.youtube.com/watch?v=4cndEDLIGVU&feature=youtu.be)
-- Introduction to differential gene expression analysis using RNA-Seq (Written by Friederike Dündar, Luce Skrabanek, Paul Zumbo). Click [here](http://chagall.med.cornell.edu/RNASEQcourse/Intro2RNAseq.pdf)
-- Introduction to DGE - click [here](https://hbctraining.github.io/DGE_workshop/lessons/04_DGE_DESeq2_analysis.html)
+- [Introduction to differential gene expression analysis using RNA-Seq Written by Friederike Dündar, Luce Skrabanek, Paul Zumbo](http://chagall.med.cornell.edu/RNASEQcourse/Intro2RNAseq.pdf)
+- [Introduction to DGE](https://hbctraining.github.io/DGE_workshop/lessons/04_DGE_DESeq2_analysis.html)
 
 
  
