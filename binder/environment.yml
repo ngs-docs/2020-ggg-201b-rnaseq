@@ -17,3 +17,6 @@ dependencies:
     - bioconductor-tximeta
     - bioconductor-deseq2
     - bioconductor-summarizedexperiment
+    - r-base
+    - r-irkernel=1.1
+    - r-devtools
