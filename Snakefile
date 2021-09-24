@@ -15,6 +15,22 @@ rule all:
         expand("rnaseq/quant/{name}_quant/quant.sf", name=SAMPLES),
         "rnaseq/fastqc/multiqc_report.html",
 
+rule knit:
+    input:
+        "rnaseq-workflow.html",
+        "rnaseq-workflow.pdf",
+
+rule knit_actual:
+    input:
+        # create a new filename for every entry in SAMPLES,
+        # replacing {name} with each entry.
+        expand("rnaseq/quant/{name}_quant/quant.sf", name=SAMPLES),
+        "rnaseq-workflow.Rmd",
+    output:
+        "rnaseq-workflow.{format}",
+    shell:
+        "./knit-Rmd.R {wildcards.format}_document"
+
 # download yeast rna-seq data from Schurch et al, 2016 study
 rule download_reads:
     output: "rnaseq/raw_data/{sample}.fq.gz" 
@@ -77,7 +93,7 @@ rule multiqc:
     conda: "rnaseq-env.yml"
     shell:
         """
-        multiqc {params.raw_dir} {params.trimmed_dir} --filename {output}
+        multiqc -f {params.raw_dir} {params.trimmed_dir} --filename {output}
         """
 
 ### download and index the yeast transcriptome ###
