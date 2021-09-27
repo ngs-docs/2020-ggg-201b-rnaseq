@@ -34,15 +34,15 @@ FC_cutoff <- log2(1.1)
 
 # RNA-Seq Differential Expression Analysis Day 2
 
-**When:** Monday, June 21st & June 23rd from 9:30 am-11:30 am PDT
+**When:** September 27st & 28th from 11:00 am PDT - 1:00 pm PDT/2:00 pm - 4:00 pm EDT
 
-**Instructors:** Amanda Charbonneau and Saranya Canchi
+**Instructor:** Amanda Charbonneau 
 
-**Moderator:** Marisa Lim
-
-**Helpers:** Abhijna Parigi, Jeremy Walter
+**Helpers:** Jeremy Walter and Saranya Canchi
 
 **Zoom:** https://zoom.us/j/7575820324?pwd=d2UyMEhYZGNiV3kyUFpUL1EwQmthQT09
+
+**Day 1 Notes:** https://hackmd.io/y63ixq2pQg28cMrptElOPQ
 
 <div class="alert alert-success">
 While we wait to get started --
@@ -51,10 +51,12 @@ While we wait to get started --
 
 3. ✅ Have you looked at the [pre-workshop resources page](https://github.com/nih-cfde/training-and-engagement/wiki/Resources-for-Workshop-Attendees)?
 
-2. ✏️ Please fill out our pre-workshop survey if you have not already done so! Link here: https://forms.gle/4jGFeV7eJpV3exhD6
+2. ✏️ Please fill out our pre-workshop survey if you have not already done so! Link here: https://forms.gle/6oesZ7h789xbYLc29
 
 Put up a ✋ on Zoom when you've *clicked* the launch binder link! (It takes a few minutes to load, so we're getting it started before the hands-on activities)
 </div>
+
+
 
 
 
