@@ -10,3 +10,4 @@ dependencies:
   - multiqc=1.8
   - salmon=1.4.0
   - tbb=2020.3
+  - python=3.8
