@@ -34,23 +34,35 @@ FC_cutoff <- log2(1.1)
 
 # RNA-Seq Differential Expression Analysis
 
+**When:**
+
 **Instructor:** Amanda Charbonneau 
 
+**Helpers:** 
+
+**Zoom:** 
+
+**Day 1 Notes:** https://hackmd.io/cCTWsc7xRciSIIlTq7fKSQ
+
 <div class="alert alert-success">
+While we wait to get started --
 
+1. Click this button [![Binder](https://aws-uswest2-binder.pangeo.io/badge_logo.svg)](https://aws-uswest2-binder.pangeo.io/v2/gh/nih-cfde/rnaseq-in-the-cloud/stable?urlpath=rstudio) to start a virtual machine. It can take up to 20 minutes for them all to start with this many participants so we're going start them and talk about the differential expression (DE) pipeline we're using while they all spin up.
 
+3. ✅ Have you looked at the [pre-workshop resources page](https://github.com/nih-cfde/training-and-engagement/wiki/Resources-for-Workshop-Attendees)?
 
+2. ✏️ Please fill out our pre-workshop survey if you have not already done so! Link here: https://forms.gle/6oesZ7h789xbYLc29
 
-
-
+Put up a ✋ on Zoom when you've *clicked* the launch binder link! (It takes a few minutes to load, so we're getting it started before the hands-on activities)
+</div>
 
 
 
 # Introductions
 
-We are both postdocs at UC Davis and part of the training and engagement team for the [NIH Common Fund Data Ecosystem](https://nih-cfde.org/), a project supported by the NIH to increase data reuse and cloud computing for biomedical research.
+I am a postdoc at UC Davis and part of the training and engagement team for the [NIH Common Fund Data Ecosystem](https://nih-cfde.org/), a project supported by the NIH to increase data reuse and cloud computing for biomedical research.
 
-You can contact us at achar@ucdavis.edu and srcanchi@ucdavis.edu.
+You can contact me at achar@ucdavis.edu
 
 Links to papers we mention and other useful references are here:
 https://hackmd.io/vxZ-4b-SSE69d2kxG7D93w
