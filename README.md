@@ -4,6 +4,10 @@ June 21 & 23, 2021
 
 CFDE Workshop
 
+Open access
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/nih-cfde/rnaseq-in-the-cloud/stable?labpath=rstudio)
+
+Requires github login
 [![Binder](https://aws-uswest2-binder.pangeo.io/badge_logo.svg)](https://aws-uswest2-binder.pangeo.io/v2/gh/nih-cfde/rnaseq-in-the-cloud/stable?urlpath=rstudio)
 
 Adapted for CFDE workshop from materials developed by Taylor Reiter and N. Tessa Pierce for 2020-ggg-201b course at UC Davis.
