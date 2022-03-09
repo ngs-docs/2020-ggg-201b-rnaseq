@@ -5,19 +5,10 @@ author:
   - N. Tessa Pierce
   - Amanda Charbonneau
 date: "`r format(Sys.time(), '%d %B, %Y')`"
-output:
-  html_document:
-    number_sections: false
-    toc: true
-    toc_depth: 2
-    toc_float: true
-    collapsed: false
-    highlight: pygment
-    df_print: paged
-    code_folding: show
+output: md_document
 ---
 
-```{r GlobalVariables}
+```{r GlobalVariables, include = F}
 
 # default to showing code, you can change it for chunks as you like
 knitr::opts_chunk$set(echo = TRUE, tidy=TRUE, message = FALSE, warning = FALSE)
@@ -36,7 +27,7 @@ FC_cutoff <- log2(1.1)
 
 **When:**
 
-**Instructor:** Amanda Charbonneau 
+**Instructor:**  
 
 **Helpers:** 
 
