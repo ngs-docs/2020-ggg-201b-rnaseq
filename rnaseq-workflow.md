@@ -1,25 +1,15 @@
-    # default to showing code, you can change it for chunks as you like
-    knitr::opts_chunk$set(echo = TRUE, tidy=TRUE, message = FALSE, warning = FALSE)
-
-    # Setting a reasonable p-value threshold to be used throughout
-    p_cutoff <- 0.1
-
-    # this is a fold change cutoff 
-    FC_cutoff <- log2(1.1)
-
 RNA-Seq Differential Expression Analysis
 ========================================
 
 **When:**
 
-**Instructor:** Amanda Charbonneau
+**Instructor:**  
 
 **Helpers:**
 
 **Zoom:**
 
 **Day 1 Notes:**
-<a href="https://hackmd.io/cCTWsc7xRciSIIlTq7fKSQ" class="uri">https://hackmd.io/cCTWsc7xRciSIIlTq7fKSQ</a>
 
 While we wait to get started –
 
