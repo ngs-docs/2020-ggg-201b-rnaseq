@@ -8,7 +8,7 @@ UC Davis
 
 <!-- [![Binder](https://binder.pangeo.io/badge_logo.svg)](https://binder.pangeo.io/v2/gh/ngs-docs/2020-ggg-201b-rnaseq/stable?urlpath=rstudio) -->
 
-[![Binder](https://binder.pangeo.io/badge_logo.svg)](https://mybinder.org/v2/gh/ngs-docs/2020-ggg-201b-rnaseq/ggg201a_sep24_2021?urlpath=rstudio)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/ngs-docs/2020-ggg-201b-rnaseq/ggg201a_sep24_2021?urlpath=rstudio)
 
 Authors: Taylor Reiter and N. Tessa Pierce
 
