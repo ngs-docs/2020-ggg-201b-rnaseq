@@ -1,5 +1,5 @@
 {
-    "salmon_version": "1.1.0",
+    "salmon_version": "1.10.0",
     "index": "rnaseq/quant/sc_ensembl_index",
     "libType": "A",
     "unmatedReads": "rnaseq/quality/ERR458502.qc.fq.gz",

@@ -1,5 +1,5 @@
 {
-    "salmon_version": "1.1.0",
+    "salmon_version": "1.10.0",
     "samp_type": "none",
     "opt_type": "vb",
     "quant_errors": [],
@@ -8,16 +8,19 @@
         "U"
     ],
     "frag_dist_length": 1001,
+    "frag_length_mean": 250.0000097391447,
+    "frag_length_sd": 25.001769513739427,
     "seq_bias_correct": true,
     "gc_bias_correct": true,
     "num_bias_bins": 4096,
     "mapping_type": "mapping",
     "num_valid_targets": 6571,
     "num_decoy_targets": 0,
-    "num_eq_classes": 8722,
+    "num_eq_classes": 8367,
     "serialized_eq_classes": false,
     "eq_class_properties": [
-        "range_factorized"
+        "range_factorized",
+        "gzipped"
     ],
     "length_classes": [
         438,
@@ -34,13 +37,13 @@
     "index_decoy_name_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "num_bootstraps": 0,
     "num_processed": 1065394,
-    "num_mapped": 924081,
+    "num_mapped": 923707,
     "num_decoy_fragments": 0,
     "num_dovetail_fragments": 0,
-    "num_fragments_filtered_vm": 17583,
-    "num_alignments_below_threshold_for_mapped_fragments_vm": 26750,
-    "percent_mapped": 86.73608073632853,
+    "num_fragments_filtered_vm": 17955,
+    "num_alignments_below_threshold_for_mapped_fragments_vm": 26777,
+    "percent_mapped": 86.70097635241048,
     "call": "quant",
-    "start_time": "Thu Oct  1 05:45:04 2020",
-    "end_time": "Thu Oct  1 05:45:11 2020"
+    "start_time": "Fri Mar 10 05:44:22 2023",
+    "end_time": "Fri Mar 10 05:44:45 2023"
 }

@@ -1,59 +1,62 @@
-[2020-10-01 05:46:19.672] [jointLog] [info] Fragment incompatibility prior below threshold.  Incompatible fragments will be ignored.
-[2020-10-01 05:46:19.672] [jointLog] [info] Usage of --validateMappings implies use of minScoreFraction. Since not explicitly specified, it is being set to 0.65
-[2020-10-01 05:46:19.672] [jointLog] [info] Usage of --validateMappings implies a default consensus slack of 0.2. Setting consensusSlack to 0.35.
-[2020-10-01 05:46:19.672] [jointLog] [info] parsing read library format
-[2020-10-01 05:46:19.672] [jointLog] [info] There is 1 library.
-[2020-10-01 05:46:19.746] [jointLog] [info] Loading pufferfish index
-[2020-10-01 05:46:19.746] [jointLog] [info] Loading dense pufferfish index.
-[2020-10-01 05:46:19.795] [jointLog] [info] done
-[2020-10-01 05:46:19.795] [jointLog] [info] Index contained 6,571 targets
-[2020-10-01 05:46:19.868] [jointLog] [info] Number of decoys : 0
-[2020-10-01 05:46:19.869] [jointLog] [warning] Fragment GC bias correction is currently *experimental* in single-end libraries.  Please use this option with caution.
-[2020-10-01 05:46:20.009] [jointLog] [info] Automatically detected most likely library type as U
-[2020-10-01 05:46:23.674] [jointLog] [info] Computed 9,671 rich equivalence classes for further processing
-[2020-10-01 05:46:23.674] [jointLog] [info] Counted 1,575,160 total reads in the equivalence classes 
-[2020-10-01 05:46:23.679] [jointLog] [warning] 5.30602e-05% of fragments were shorter than the k used to build the index.
-If this fraction is too large, consider re-building the index with a smaller k.
-The minimum read size found was 26.
+[2023-03-10 05:38:21.893] [jointLog] [info] setting maxHashResizeThreads to 32
+[2023-03-10 05:38:21.893] [jointLog] [info] Fragment incompatibility prior below threshold.  Incompatible fragments will be ignored.
+[2023-03-10 05:38:21.893] [jointLog] [info] Usage of --validateMappings implies use of minScoreFraction. Since not explicitly specified, it is being set to 0.65
+[2023-03-10 05:38:21.893] [jointLog] [info] Setting consensusSlack to selective-alignment default of 0.35.
+[2023-03-10 05:38:21.893] [jointLog] [info] parsing read library format
+[2023-03-10 05:38:21.893] [jointLog] [info] There is 1 library.
+[2023-03-10 05:38:21.894] [jointLog] [info] Loading pufferfish index
+[2023-03-10 05:38:21.895] [jointLog] [warning] The index did not record if the `--keepDuplicates` flag was used. Please consider re-indexing with a newer version of salmon that will propagate this information.
+[2023-03-10 05:38:21.895] [jointLog] [info] Loading dense pufferfish index.
+[2023-03-10 05:38:22.006] [jointLog] [info] done
+[2023-03-10 05:38:22.114] [jointLog] [info] Index contained 6,571 targets
+[2023-03-10 05:38:22.200] [jointLog] [info] Number of decoys : 0
+[2023-03-10 05:38:22.201] [jointLog] [warning] Fragment GC bias correction is currently *experimental* in single-end libraries.  Please use this option with caution.
+[2023-03-10 05:38:22.849] [jointLog] [info] Automatically detected most likely library type as U
 
-
-[2020-10-01 05:46:23.679] [jointLog] [info] Number of mappings discarded because of alignment score : 51,495
-[2020-10-01 05:46:23.679] [jointLog] [info] Number of fragments entirely discarded because of alignment score : 35,807
-[2020-10-01 05:46:23.679] [jointLog] [info] Number of fragments discarded because they are best-mapped to decoys : 0
-[2020-10-01 05:46:23.679] [jointLog] [info] Number of fragments discarded because they have only dovetail (discordant) mappings to valid targets : 0
-[2020-10-01 05:46:23.679] [jointLog] [warning] Only 1575160 fragments were mapped, but the number of burn-in fragments was set to 5000000.
-The effective lengths have been computed using the observed mappings.
-
-[2020-10-01 05:46:23.679] [jointLog] [info] Mapping rate = 83.5783%
-
-[2020-10-01 05:46:23.679] [jointLog] [info] finished quantifyLibrary()
-[2020-10-01 05:46:23.679] [jointLog] [info] Starting optimizer
-[2020-10-01 05:46:23.683] [jointLog] [info] Marked 0 weighted equivalence classes as degenerate
-[2020-10-01 05:46:23.684] [jointLog] [info] iteration = 0 | max rel diff. = 15968.8
-[2020-10-01 05:46:23.688] [jointLog] [info] iteration 11, adjusting effective lengths to account for biases
-[2020-10-01 05:46:23.674] [fileLog] [info] 
+[2023-03-10 05:38:37.030] [jointLog] [info] Computed 9,139 rich equivalence classes for further processing
+[2023-03-10 05:38:37.031] [fileLog] [info] 
 At end of round 0
 ==================
 Observed 1884651 total fragments (1884651 in most recent round)
 
-[2020-10-01 05:46:24.964] [jointLog] [info] Computed expected counts (for bias correction)
-[2020-10-01 05:46:24.965] [jointLog] [info] processed bias for 0.0% of the transcripts
-[2020-10-01 05:46:25.098] [jointLog] [info] processed bias for 10.0% of the transcripts
-[2020-10-01 05:46:25.228] [jointLog] [info] processed bias for 20.0% of the transcripts
-[2020-10-01 05:46:25.360] [jointLog] [info] processed bias for 30.0% of the transcripts
-[2020-10-01 05:46:25.496] [jointLog] [info] processed bias for 40.0% of the transcripts
-[2020-10-01 05:46:25.641] [jointLog] [info] processed bias for 50.0% of the transcripts
-[2020-10-01 05:46:25.765] [jointLog] [info] processed bias for 60.0% of the transcripts
-[2020-10-01 05:46:25.897] [jointLog] [info] processed bias for 70.1% of the transcripts
-[2020-10-01 05:46:26.043] [jointLog] [info] processed bias for 80.0% of the transcripts
-[2020-10-01 05:46:26.223] [jointLog] [info] processed bias for 90.0% of the transcripts
-[2020-10-01 05:46:26.410] [jointLog] [info] processed bias for 100.0% of the transcripts
-[2020-10-01 05:46:26.476] [jointLog] [info] iteration = 100 | max rel diff. = 0.0402059
-[2020-10-01 05:46:26.532] [jointLog] [info] iteration = 193 | max rel diff. = 0.00374194
-[2020-10-01 05:46:26.532] [jointLog] [info] Finished optimizer
-[2020-10-01 05:46:26.532] [jointLog] [info] writing output 
+[2023-03-10 05:38:37.030] [jointLog] [info] Counted 1,574,506 total reads in the equivalence classes 
+[2023-03-10 05:38:37.154] [jointLog] [warning] 5.30602e-05% of fragments were shorter than the k used to build the index.
+If this fraction is too large, consider re-building the index with a smaller k.
+The minimum read size found was 26.
 
-[2020-10-01 05:46:26.545] [jointLog] [warning] NOTE: Read Lib [[ rnaseq/quality/ERR458500.qc.fq.gz ]] :
+
+[2023-03-10 05:38:37.154] [jointLog] [info] Number of mappings discarded because of alignment score : 51,602
+[2023-03-10 05:38:37.154] [jointLog] [info] Number of fragments entirely discarded because of alignment score : 36,430
+[2023-03-10 05:38:37.154] [jointLog] [info] Number of fragments discarded because they are best-mapped to decoys : 0
+[2023-03-10 05:38:37.154] [jointLog] [info] Number of fragments discarded because they have only dovetail (discordant) mappings to valid targets : 0
+[2023-03-10 05:38:37.155] [jointLog] [warning] Only 1574506 fragments were mapped, but the number of burn-in fragments was set to 5000000.
+The effective lengths have been computed using the observed mappings.
+
+[2023-03-10 05:38:37.155] [jointLog] [info] Mapping rate = 83.5436%
+
+[2023-03-10 05:38:37.155] [jointLog] [info] finished quantifyLibrary()
+[2023-03-10 05:38:37.157] [jointLog] [info] Starting optimizer
+[2023-03-10 05:38:37.163] [jointLog] [info] Marked 0 weighted equivalence classes as degenerate
+[2023-03-10 05:38:37.164] [jointLog] [info] iteration = 0 | max rel diff. = 8473.52
+[2023-03-10 05:38:37.172] [jointLog] [info] iteration 11, adjusting effective lengths to account for biases
+[2023-03-10 05:38:43.847] [jointLog] [info] Computed expected counts (for bias correction)
+[2023-03-10 05:38:43.848] [jointLog] [info] processed bias for 0.0% of the transcripts
+[2023-03-10 05:38:44.548] [jointLog] [info] processed bias for 10.0% of the transcripts
+[2023-03-10 05:38:45.266] [jointLog] [info] processed bias for 20.0% of the transcripts
+[2023-03-10 05:38:46.053] [jointLog] [info] processed bias for 30.0% of the transcripts
+[2023-03-10 05:38:46.850] [jointLog] [info] processed bias for 40.0% of the transcripts
+[2023-03-10 05:38:47.744] [jointLog] [info] processed bias for 50.0% of the transcripts
+[2023-03-10 05:38:48.449] [jointLog] [info] processed bias for 60.1% of the transcripts
+[2023-03-10 05:38:49.245] [jointLog] [info] processed bias for 70.0% of the transcripts
+[2023-03-10 05:38:50.047] [jointLog] [info] processed bias for 80.0% of the transcripts
+[2023-03-10 05:38:50.851] [jointLog] [info] processed bias for 90.1% of the transcripts
+[2023-03-10 05:38:51.756] [jointLog] [info] processed bias for 100.0% of the transcripts
+[2023-03-10 05:38:52.347] [jointLog] [info] iteration = 100 | max rel diff. = 0.037414
+[2023-03-10 05:38:52.855] [jointLog] [info] iteration = 190 | max rel diff. = 0.00380199
+[2023-03-10 05:38:52.857] [jointLog] [info] Finished optimizer
+[2023-03-10 05:38:52.857] [jointLog] [info] writing output 
+
+[2023-03-10 05:38:52.946] [jointLog] [warning] NOTE: Read Lib [[ rnaseq/quality/ERR458500.qc.fq.gz ]] :
 
 Detected a *potential* strand bias > 1% in an unstranded protocol check the file: rnaseq/quant/ERR458500_quant/lib_format_counts.json for details
 
