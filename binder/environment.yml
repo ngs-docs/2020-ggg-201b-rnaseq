@@ -18,5 +18,6 @@ dependencies:
     - bioconductor-deseq2
     - bioconductor-summarizedexperiment
     - r-base
+    - r-irkernel
 #    - r-irkernel=1.1
     - r-devtools
